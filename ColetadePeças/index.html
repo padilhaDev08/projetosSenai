@@ -73,19 +73,20 @@
         <option value="divergente">Divergentes</option>
       </select>
     </label>
-    <label>Foto
-      <select id="fFoto">
-        <option value="">Todas</option>
-        <option value="sem">Sem foto</option>
-        <option value="com">Com foto</option>
-      </select>
-    </label>
+
     <div class="view-toggle" role="group" aria-label="Visualização">
       <button type="button" id="vLocal" class="btn small active">Por local</button>
       <button type="button" id="vLista" class="btn small">Lista</button>
     </div>
     <button type="button" id="btnEtiquetas" class="btn small">Imprimir etiquetas (filtradas)</button>
     <button type="button" id="btnLimpar" class="btn small ghost">Limpar filtros</button>
+  </section>
+
+  <section class="foto-tabs" role="tablist" aria-label="Fotos das peças">
+    <input type="hidden" id="fFoto" value="">
+    <button type="button" role="tab" class="ftab active" data-foto="" aria-selected="true">Todas <b id="nFotoTodas">0</b></button>
+    <button type="button" role="tab" class="ftab" data-foto="com" aria-selected="false">📷 Com fotos <b id="nFotoCom">0</b></button>
+    <button type="button" role="tab" class="ftab" data-foto="sem" aria-selected="false">Sem fotos <b id="nFotoSem">0</b></button>
   </section>
 
   <p id="info" class="muted info"></p>

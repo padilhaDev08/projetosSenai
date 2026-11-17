@@ -21,7 +21,7 @@ Sem a planilha configurada, o site funciona no "modo antigo" (só `data.json`, s
 
 ## Fotos das peças
 - Em **+ Nova peça** ou **Editar**: *📷 Tirar foto* (abre a câmera no celular), *🖼️ Escolher imagem* ou *Remover foto*. A foto é enviada ao **Salvar**.
-- Peças sem foto mostram **📷 sem foto** no cartão: toque para adicionar. O filtro **Foto ▸ Sem foto** lista as que faltam.
+- Peças sem foto mostram **📷 sem foto** no cartão: toque para adicionar. Acima da lista ficam as abas **Todas · 📷 Com fotos · Sem fotos**, com a quantidade de cada uma (seguem a busca e os outros filtros): a aba **Sem fotos** mostra as que faltam.
 - O site reduz a foto (máx. 1280 px, JPEG) e a guarda no Google Drive de quem criou o script, na pasta **Fotos - Inventário Robótica**, compartilhada "qualquer pessoa com o link" (só leitura). A planilha recebe o link na coluna **Foto** (K); a coluna **FotoEm** (L) guarda a data da foto.
 - Enviar foto precisa de internet. Sem conexão, o site avisa e não salva até você tentar de novo (ou remover a foto).
 - A foto tem data própria: editar os outros dados da peça (inclusive num celular com o site antigo em cache) **não apaga a foto**.

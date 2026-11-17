@@ -206,9 +206,9 @@
   }
 
   // ---------- filtros ----------
-  function filtered() {
+  function filtered(semFiltroFoto = false) {
     const terms = norm($('#busca').value).split(/\s+/).filter(Boolean);
-    const fl = $('#fLocal').value, fc = $('#fCat').value, fs = $('#fStatus').value, ff = $('#fFoto').value;
+    const fl = $('#fLocal').value, fc = $('#fCat').value, fs = $('#fStatus').value, ff = semFiltroFoto ? '' : $('#fFoto').value;
     return state.pecas.filter(p => {
       if (fl && !(p.local === fl || p.local.startsWith(fl + ' > '))) return false;
       if (fc && p.categoria !== fc) return false;
@@ -256,6 +256,16 @@
     document.querySelectorAll('#lista .card').forEach(c => {
       const i = c.querySelector('.count-row input');
       if (i && i.value !== i.defaultValue) typed[c.dataset.code] = i.value;
+    });
+
+    // seção Com fotos / Sem fotos (os números seguem a busca e os outros filtros)
+    const base = filtered(true), nCom = base.filter(p => p.foto).length;
+    $('#nFotoTodas').textContent = base.length;
+    $('#nFotoCom').textContent = nCom;
+    $('#nFotoSem').textContent = base.length - nCom;
+    document.querySelectorAll('.ftab').forEach(b => {
+      const on = b.dataset.foto === $('#fFoto').value;
+      b.classList.toggle('active', on); b.setAttribute('aria-selected', on);
     });
 
     // lista
@@ -770,7 +780,8 @@
   // ---------- eventos ----------
   function bind() {
     $('#busca').addEventListener('input', render);
-    ['#fLocal', '#fCat', '#fStatus', '#fFoto'].forEach(s => $(s).addEventListener('change', render));
+    ['#fLocal', '#fCat', '#fStatus'].forEach(s => $(s).addEventListener('change', render));
+    document.querySelectorAll('.ftab').forEach(b => b.addEventListener('click', () => { $('#fFoto').value = b.dataset.foto; render(); }));
     $('#btnLimpar').addEventListener('click', () => { $('#busca').value = ''; $('#fLocal').value = ''; $('#fCat').value = ''; $('#fStatus').value = ''; $('#fFoto').value = ''; render(); });
     $('#vLocal').addEventListener('click', () => { view = 'local'; $('#vLocal').classList.add('active'); $('#vLista').classList.remove('active'); render(); });
     $('#vLista').addEventListener('click', () => { view = 'lista'; $('#vLista').classList.add('active'); $('#vLocal').classList.remove('active'); render(); });
